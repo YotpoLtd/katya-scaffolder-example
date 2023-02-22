@@ -18,9 +18,10 @@ spec:
   steps:
     - $yaml: ./steps/one/step.yaml
     - $yaml: ./steps/two/step.yaml
+    - $yaml: ./steps/trigger-gha/step.yaml
     - $yaml: ./steps/merge-json/step.yaml
     - $yaml: ./steps/publish-repo/step.yaml
-    - $yaml: ./steps/trigger-gha/step.yaml
+
 #output:
 #  links:
 #    - $yaml: ../../defaults/snippets/output/publish.yaml
