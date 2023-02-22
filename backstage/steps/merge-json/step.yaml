@@ -1,0 +1,9 @@
+id: add-command
+name: Add some scripts to package.jons
+action: json:merge
+input:
+  path: package.json
+  content:
+    scripts:
+      test: "npm test"
+

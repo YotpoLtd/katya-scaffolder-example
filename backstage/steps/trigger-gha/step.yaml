@@ -1,0 +1,8 @@
+name: Trigger GHA
+id: trigger-gha
+action: github:actions:dispatch
+input:
+  repoUrl: github.com?owner=YotpoLtd&repo=katya-scaffolder-example
+  workflowId: scaffolder-trigger.yaml
+  branchOrTagName: master
+

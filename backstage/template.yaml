@@ -1,0 +1,27 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: katya-tests-reusable-scaffolders
+  title: Katya plays with reusabl scaffolders
+spec:
+  owner: Ivys
+  type: website
+  parameters:
+    - title: Provide some simple information
+      required:
+        - repo_name
+      properties:
+        repo_name:
+          title: Repo name
+          type: string
+          description: Name of the repo
+  steps:
+    - $yaml: ./steps/one/step.yaml
+    - $yaml: ./steps/two/step.yaml
+    - $yaml: ./steps/merge-json/step.yaml
+    - $yaml: ./steps/publish-repo/step.yaml
+    - $yaml: ./steps/trigger-gha/step.yaml
+#output:
+#  links:
+#    - $yaml: ../../defaults/snippets/output/publish.yaml
+#    - $yaml: ../../defaults/snippets/output/show-catalog.yaml

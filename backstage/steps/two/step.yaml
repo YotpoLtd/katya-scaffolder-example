@@ -1,0 +1,7 @@
+id: backstageTemplate
+name: Second template
+action: fetch:template
+input:
+  url: ./steps/two/template
+  values:
+    repo_name: ${{ parameters.repo_name }}

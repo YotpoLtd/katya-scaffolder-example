@@ -1,0 +1,8 @@
+id: backstageTemplate
+name: Publishing repo
+action: publish:github
+input:
+  allowedHosts: [ 'github.com' ]
+  description: Testing
+  repoUrl: github.com?owner=YotpoLtd&repo=${{ parameters.repo_name }}
+  defaultBranch: master
