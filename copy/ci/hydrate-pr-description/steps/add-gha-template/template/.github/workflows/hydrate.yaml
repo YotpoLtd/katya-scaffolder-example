@@ -1,0 +1,16 @@
+name: 'Add Jira details to PR description'
+on:
+    pull_request:
+        types: [opened, edited]
+
+jobs:
+    add-jira-description:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+
+            - name: Hydrate PR with Jira information
+              uses: YotpoLtd/ci-utils/.github/actions/hydrate-pr-description@hydrate-pr-description.v1
+              with:
+                  JIRA_TOKEN: ${{ '${{ secrets.JIRA_TOKEN }}' }}
+                  GITHUB_TOKEN: ${{ '${{ secrets.GITHUB_TOKEN }}' }}

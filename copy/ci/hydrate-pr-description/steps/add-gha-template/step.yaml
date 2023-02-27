@@ -1,0 +1,5 @@
+id: fetch-base
+name: Fetch GHA Jira action Base
+action: fetch:template
+input:
+  url: https://github.com/YotpoLtd/katya-scaffolder-example/tree/master/copy/ci/hydrate-pr-description/steps/add-gha-template/template

@@ -1,0 +1,17 @@
+yotpo:
+  deploymentName: ${{values.project_name }}-config
+  namespace: default
+  chartName: yotpo/microservice-config
+  chartPath: http://chartmuseum.k8s.yotpodev.com/
+  chartVersion: 0.1.2
+  repoName:  ${{ values.repo_name }}
+  productLine: ${{ values.product_line }}
+  deployByDefault: true
+
+clusters:
+  production:
+    - name: ${{values.project_name }}-env-vars
+      data:
+        USERNAME: "vault:kubernetes/${{values.product_line }}/data/${{values.project_name }}#USERNAME"
+        PASSWORD: "vault:kubernetes/${{values.product_line }}/data/${{values.project_name }}#PASSWORD"
+        RECORD_KEY: "vault:kubernetes/${{values.product_line }}/data/${{values.project_name }}#RECORD_KEY"

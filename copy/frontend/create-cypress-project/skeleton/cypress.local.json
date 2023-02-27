@@ -1,0 +1,10 @@
+{
+  "viewportWidth": 1280,
+  "viewportHeight": 760,
+  "chromeWebSecurity": false,
+  "env": {
+    "apiDomain": "https://api.yotpo.com",
+    "username": "should be set in .env(checkout README.md)",
+    "password": "should be set in .env(checkout README.md)"
+  }
+}

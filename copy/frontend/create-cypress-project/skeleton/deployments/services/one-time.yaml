@@ -1,0 +1,44 @@
+yotpo:
+  deploymentName: ${{values.project_name }}
+  namespace: default
+  chartName: yotpo/microservice
+  chartPath: http://chartmuseum.k8s.yotpodev.com/
+  chartVersion: ~0.4.0
+  repoName: ${{values.repo_name }}
+  productLine: ${{values.product_line }}
+  team: ${{values.owner }}
+
+configMaps: [ "${{values.project_name }}-env-vars"  ]
+
+image:
+  registry: 402837048690.dkr.ecr.us-east-1.amazonaws.com
+  repository: ${{values.repo_name }}
+  tag: master
+  pullPolicy: Always
+
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+vault:
+ enabled: true
+
+extraEnv:
+  CYPRESS_RUN_TAG: "one-time"
+
+# -- deployment/batch/cron
+workloadType: batch
+
+resources:
+  cpu: 4000m
+  memory: 2G

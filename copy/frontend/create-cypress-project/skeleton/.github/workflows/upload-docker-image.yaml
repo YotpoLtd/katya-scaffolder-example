@@ -1,0 +1,57 @@
+name: 'Build & upload docker image'
+on:
+  push:
+    branches:
+
+permissions:  ## <-- Must have this to assume AWS permissions
+  id-token: write
+  contents: read
+
+jobs:
+  build-and-deploy:
+    env:
+      PROJECT_NAME: ${{values.project_name }}
+      DEPLOYMENT_JOB_NAME: production_deploy_${{values.project_name }}_to_k8s
+      CRON_YAML: deployments/services/cron.yaml
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Configure AWS credentials  ## <-- The step that authenticate the job to AWS
+        uses: YotpoLtd/github-actions-permissions/.github/actions/aws_credentials@master
+
+      - name: Validate ECR repo existence
+        env:
+          REPO_NAME: ${{ values.project_name }}
+        run: |
+          aws ecr describe-repositories --repository-names ${REPO_NAME} || aws ecr create-repository --repository-name ${REPO_NAME}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+
+      - name: Build, tag, and push image to Amazon ECR
+        env:
+          ECR_REGISTRY: ${{ '${{ steps.login-ecr.outputs.registry }}' }}
+          JFROG_USER: ${{ '${{secrets.JFROG_USER}}' }}
+          JFROG_PASSWORD: ${{ '${{secrets.JFROG_PASSWORD}}' }}
+        run: |
+          IMAGE=${PROJECT_NAME}:${GITHUB_SHA}
+          COMMIT_TAG=${ECR_REGISTRY}/${PROJECT_NAME}:${GITHUB_SHA}
+          BRANCH_TAG=${ECR_REGISTRY}/${PROJECT_NAME}:${GITHUB_REF_NAME}
+
+          docker build -t $IMAGE --build-arg JFROG_USER --build-arg JFROG_PASSWORD .
+
+          docker tag $IMAGE $COMMIT_TAG
+          docker push $COMMIT_TAG
+
+          docker tag $IMAGE $BRANCH_TAG
+          docker push $BRANCH_TAG
+
+      - name: rerun cron job
+        if: ${{ github.ref_name == 'master' }}
+        run: |
+          REQUEST_URL="https://github-jenkins-production.yotpo.com/job/${DEPLOYMENT_JOB_NAME}/buildWithParameters?VALUES_FILE=${CRON_YAML}&TAG=${GITHUB_SHA}&TRIGGERED_BY=${GITHUB_ACTOR}"
+          echo ${REQUEST_URL}
+          curl -X POST -i --user ${{ '${{secrets.JENKINS_API_USER}}' }}:${{ '${{secrets.JENKINS_API_TOKEN}}' }} --url ${REQUEST_URL}
+

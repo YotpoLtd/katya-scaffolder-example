@@ -1,0 +1,33 @@
+product:
+  title: Product name
+  type: string
+  description: Choose your product name
+  anyOf:
+    - type: string
+      title: Loyalty
+      enum:
+        - "Loyalty"
+    - type: string
+      title: Reviews
+      enum:
+        - "Reviews"
+    - type: string
+      title: SMS
+      enum:
+        - "SMS"
+    - type: string
+      title: Subscriptions
+      enum:
+        - "Subscriptions"
+    - type: string
+      title: VMS
+      enum:
+        - "VMS"
+    - type: string
+      title: EmailMarketing
+      enum:
+        - "EmailMarketing"
+    - type: string
+      title: Extensions
+      enum:
+        - "Extensions"
