@@ -19,6 +19,13 @@ spec:
     - $yaml: ./steps/one/step.yaml
     - $yaml: ./steps/two/step.yaml
     - $yaml: ./steps/trigger-gha/step.yaml
+    - id: fs-append
+      name: Update .gitignore
+      action: fs:append
+      input:
+        file: .gitignore
+        text: '.lighthouseci'
+
     - $yaml: ./steps/merge-json/step.yaml
     - $yaml: ./steps/publish-repo/step.yaml
 

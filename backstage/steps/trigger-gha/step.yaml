@@ -5,4 +5,3 @@ input:
   repoUrl: github.com?owner=YotpoLtd&repo=katya-scaffolder-example
   workflowId: scaffolder-trigger.yaml
   branchOrTagName: master
-
