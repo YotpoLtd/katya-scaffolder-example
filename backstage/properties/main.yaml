@@ -1,0 +1,10 @@
+title: First stage params
+required:
+  - repo_name
+properties:
+  repo_name:
+    title: Repo name
+    type: string
+    description: Name of the repo
+  product:
+    $yaml: ../params/product.yaml

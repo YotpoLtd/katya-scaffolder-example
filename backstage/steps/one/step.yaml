@@ -2,6 +2,6 @@ id: backstageTemplate
 name: One template
 action: fetch:template
 input:
-  url: ./steps/one/template
+  url: https://github.com/YotpoLtd/katya-scaffolder-example/tree/master/backstage//steps/one/template
   values:
     repo_name: ${{ parameters.repo_name }}

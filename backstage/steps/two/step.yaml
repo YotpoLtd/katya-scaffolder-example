@@ -2,6 +2,7 @@ id: backstageTemplate
 name: Second template
 action: fetch:template
 input:
+  # path relative to template where this step's gonna be used
   url: ./steps/two/template
   values:
     repo_name: ${{ parameters.repo_name }}

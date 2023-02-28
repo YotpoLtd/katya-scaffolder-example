@@ -7,14 +7,16 @@ spec:
   owner: Ivys
   type: website
   parameters:
-    - title: Provide some simple information
-      required:
-        - repo_name
-      properties:
-        repo_name:
-          title: Repo name
-          type: string
-          description: Name of the repo
+    - $yaml: ./properties/main.yaml
+  #    - title: Provide more
+  #      required:
+  #        - group
+  #      properties:
+  #        group:
+  #          title: Group name
+  #          type: string
+  #          description: Name of the repo
+
   steps:
     - $yaml: ./steps/one/step.yaml
     - $yaml: ./steps/two/step.yaml
