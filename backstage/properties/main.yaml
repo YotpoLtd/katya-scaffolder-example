@@ -6,5 +6,12 @@ properties:
     title: Repo name
     type: string
     description: Name of the repo
-  product:
-    $yaml: ../params/product.yaml
+  system:
+    title: System
+    type: string
+    description: The system this service will be part of
+    ui:field: EntityNamePicker
+    ui:options:
+      allowedKinds:
+        - System
+
