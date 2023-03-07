@@ -1,0 +1,55 @@
+name: CI
+on: [push]
+
+jobs:
+  # Validate Widget bundle, artifacts and static assets
+  validate:
+    uses: YotpoLtd/widget-v3-code-utils/.github/workflows/validate-reusable.yaml@validate-reusable.v0
+    secrets: inherit
+    with:
+      product-line: ${{ values.product_line }}
+      run-commit-lint: false
+      run-lint: 'npm run lint'
+      run-unit-tests: ''
+      warn-npm-updates: false
+      dependencies: '@ugc-storefont/core' # todo
+
+  # Build Docker Image
+  docker-build:
+    needs: [validate]
+    uses: YotpoLtd/widget-v3-code-utils/.github/workflows/docker-build-reusable.yaml@docker-build-reusable.v0
+    secrets: inherit
+
+  # Run Cypress E2E Tests
+  e2e:
+    needs: [validate]
+    uses: YotpoLtd/widget-v3-code-utils/.github/workflows/cypress-e2e-reusable.yaml@cypress-e2e-reusable.v0
+    secrets: inherit
+    with:
+      use-applitools: true
+      browser: chrome
+      build: npm run build
+      start: npm run preview
+      command: npm run test:e2e:headless
+      base-url: 'http://localhost:8080'
+
+  # Run Lighthouse Tests
+  lighthouse:
+    needs: [validate]
+    uses: YotpoLtd/ci-utils/.github/workflows/lighthouse-reusable.yaml@lighthouse-reusable.v0
+    secrets: inherit
+    with:
+      server-urls: http://localhost:8080
+      presets: desktop,mobile
+
+  # Deploy via Jenkins on master
+  deploy:
+    if: ${{ github.ref_name == 'master' }}
+    needs: [validate, docker-build, e2e, lighthouse]
+    uses: YotpoLtd/widget-v3-code-utils/.github/workflows/jenkins-deploy-reusable.yaml@jenkins-deploy-reusable.v0
+    secrets: inherit
+    with:
+      PROJECT_NAME: ${{values.repo_name}}
+      NEW_TEMPLATE_WIDGET_TYPE: 'PromotedProducts'
+      SLACK_ROOMS: pixels-changelog
+      DEPLOY_CUSTOMIZATIONS: true

@@ -1,0 +1,4 @@
+title: Yotpo product line short prefix
+type: string
+description: The prefix will be added to each resource name
+enum: [ "infra","comm", "data","lr", "plat", "sub", "ugc", "sms" ]

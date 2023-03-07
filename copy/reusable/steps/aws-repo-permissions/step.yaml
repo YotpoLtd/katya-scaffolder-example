@@ -1,0 +1,12 @@
+# Attention: your template MUST have parameters with exact names: repo_name, product_line
+# Otherwise, this step would fail
+id: generate github actions aws permissions
+name: Generate github actions aws permissions
+action: github:actions:dispatch
+input:
+  repoUrl: github.com?owner=YotpoLtd&repo=github-actions-permissions
+  workflowId: github_actions_aws_permissions.yaml
+  branchOrTagName: master
+  workflowInputs:
+    github_repository_name: ${{ parameters.repo_name }}
+    product_lines: ${{ parameters.product_line }}

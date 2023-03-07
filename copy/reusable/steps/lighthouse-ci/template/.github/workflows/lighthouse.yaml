@@ -1,0 +1,18 @@
+name: Lighthouse CI
+on:
+  push:
+    branches:
+      - '*'
+
+permissions:  ## <-- Must have this to assume AWS permissions
+  id-token: write
+  contents: read
+
+jobs:
+  lighthouse:
+    uses: YotpoLtd/ci-utils/.github/workflows/lighthouse-reusable.yaml@lighthouse-reusable.v0
+    secrets: inherit
+    with:
+      server-urls: '${{values.url}}'
+      presets: desktop,mobile
+      lhci-version: '${{values.lhci_version}}'

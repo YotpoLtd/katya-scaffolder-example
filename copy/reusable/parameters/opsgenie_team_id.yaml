@@ -1,0 +1,6 @@
+title: Opsgenie team id
+type: string
+description: |
+  Open your opsgenie team in the browser and extract the id from the url.
+  Example: https://yotpo.app.opsgenie.com/teams/dashboard/fa193b85-65aa-458e-bfa3-212d7cb32b3f/main
+  The id is: fa193b85-65aa-458e-bfa3-212d7cb32b3f

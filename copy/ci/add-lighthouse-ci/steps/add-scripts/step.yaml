@@ -1,0 +1,9 @@
+id: add-command
+name: Add lhci:run command to package json
+action: json:merge
+input:
+  path: package.json
+  content:
+    scripts:
+      lhci:run: ${{parameters.start_task or 'npm run start:prod'}}
+      lighhouse:report: "lhci autorun"

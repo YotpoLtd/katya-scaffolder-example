@@ -1,0 +1,74 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: copy-add-lighthouse-ci
+  title: Copy Add LighthouseCI to the repo
+  description: Generates GHA workflow and lighthouse configs
+  tags:
+    - lighthouse
+    - gha
+    - ci
+spec:
+  owner: Ivys
+  type: infrastructure
+  parameters:
+    - title: Provide general information
+      required:
+        - repo_name
+        - product_line
+        - start_task
+      properties:
+        repo_name:
+          title: Repository Name
+          type: string
+          description: "Name of the repo"
+        product_line:
+          $yaml: ../../reusable/parameters/product_line.yaml
+        start_task:
+          title: Task to start frontend
+          type: string
+          description: "npm task to start FE locally _IN PRODUCTION MODE_ (i.e. `npm run start:prod` or `vue-cli-service serve --mode production`)"
+
+    - $yaml: ./steps/add-lhci-template/parameters.yaml
+  steps:
+    - $yaml: ./steps/add-lhci-template/step.yaml
+    - $yaml: ./steps/add-lhci-gha/step.yaml
+
+    - id: fetch-repo
+      name: Fetch Repo
+      action: fetch:plain
+      input:
+        url: "https://github.com/YotpoLtd/${{ parameters.repo_name }}/blob/master"
+
+    - $yaml: ./steps/add-scripts/step.yaml
+    - $yaml: ./steps/append-gitignore/step.yaml
+
+    - id: update-yaml
+      name: Update catalog-info yaml with annotation
+      action: roadiehq:utils:merge
+      input:
+        path: ./catalog-info.yaml
+        content:
+          metadata:
+            tags: [ 'lighthouse' ]
+
+    - $yaml: ../../reusable/steps/aws-repo-permissions/step.yaml
+
+    - id: publish
+      name: Publish
+      action: publish:github:pull-request
+      input:
+        repoUrl: "github.com?owner=YotpoLtd&repo=${{ parameters.repo_name }}"
+        title: "ci: add lighthouse config"
+        branchName: add-lighthouse-${{ '' | now }}
+        description: |
+          ### Added lighthouse configuration to the repo. **Additional steps are required**
+          1. Run `npm run lighhouse:report` locally and checkout console output and your report in `.lighthouseci` folder. Now you can adjust numbers in `lighthouse.assertions.js`
+          2. Rerun lighthouse job in your PR to see all changes applied. Now you are ready to merge this PR ❤️
+          3. Read more about using lighhouse in the [docs](https://yotpo.roadie.so/docs/default/domain/frontend-infra/lighthouse/lighthouse) about how assertions work
+          4. Read more about using the reusable [Github Workflow](https://github.com/YotpoLtd/ci-utils/blob/master/docs/workflows/lighthouse.md)
+
+  output:
+    links:
+      - url: ${{steps.publish.output.remoteUrl}}
+        text: "Go to freshly created PR "

@@ -1,0 +1,40 @@
+title: Product line
+type: string
+description: Choose your product line
+anyOf:
+  - type: string
+    title: ugc
+    enum:
+      - "ugc"
+  - type: string
+    title: communication
+    enum:
+      - "communication"
+  - type: string
+    title: platform
+    enum:
+      - "platform"
+  - type: string
+    title: data-group
+    enum:
+      - "data-group"
+  - type: string
+    title: loyalty
+    enum:
+      - "loyalty"
+  - type: string
+    title: infra (devops)
+    enum:
+      - "infra"
+  - type: string
+    title: subscriptions
+    enum:
+      - "subscriptions"
+  - type: string
+    title: smsbump
+    enum:
+      - "smsbump"
+  - type: string
+    title: app-infra (infra group products)
+    enum:
+      - "app-infra"

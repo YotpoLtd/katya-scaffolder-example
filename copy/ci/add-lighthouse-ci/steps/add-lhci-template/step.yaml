@@ -1,0 +1,9 @@
+id: fetch-base
+name: Fetch Base
+action: fetch:template
+input:
+  url: https://github.com/YotpoLtd/katya-scaffolder-example/tree/master/copy/ci/add-lighthouse-ci/steps/add-lhci-template/template
+  values:
+    url: ${{parameters.url}}
+    node_version: ${{parameters.node_version}}
+    lhci_version: ${{'0.10.x' if parameters.node_version == "16" else '0.8.x'}}

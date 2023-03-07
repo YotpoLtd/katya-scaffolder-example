@@ -1,5 +1,0 @@
-project_name:
-  title: Project name
-  type: string
-  pattern: "^[a-z-]{3,}$"
-  description: Name of the project (will also be used for k8s and repo name)

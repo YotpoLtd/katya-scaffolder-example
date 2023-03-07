@@ -1,0 +1,60 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: create-perite-vuew-widget
+  title: Test – Create Petite Vuew widget
+  description: Create new repo for Petite Vuew widget development
+  tags:
+    - frontend
+    - widgets
+    - petite-vue
+spec:
+  owner: Ivys
+  type: widget
+  parameters:
+    - title: Provide basic information
+      required:
+        - repo_name
+        - product_line
+        - product
+        - project_name
+      properties:
+        repo_name:
+          title: Repo name
+          type: string
+          description: Name of the repo to be created
+        description:
+          title: Repo description
+          type: string
+          description: Repo description
+        project_name:
+          title: Project name
+          type: string
+          description: Name of the project for k8s
+        product_line:
+          $yaml: ../../reusable/parameters/product_line.yaml
+        owner:
+          $yaml: ../../reusable/parameters/owner.yaml
+
+    - $yaml: ../../ci/add-lighthouse-ci/steps/add-lhci-template/parameters.yaml
+  steps:
+    - id: template
+      name: Fetch Skeleton + Template
+      action: fetch:template
+      input:
+        url: ./skeleton
+        values:
+          product_line: ${{ parameters.product_line }}
+          repo_name: ${{ parameters.repo_name }}
+
+
+    - $yaml: ../../ci/add-lighthouse-ci/steps/add-lhci-template/step.yaml
+    - $yaml: ../../ci/hydrate-pr-description/steps/add-gha-template/step.yaml
+
+    - $yaml: ../../reusable/steps/create-github-repo/step.yaml
+
+  output:
+    remoteUrl: ${{ steps.publish.output.remoteUrl }}
+    links:
+      - url: https://github.com/YotpoLtd/terraform-github/tree/master/RnD-teams
+        text: "Add the new repository in terraform-github"

@@ -1,0 +1,14 @@
+title: Provide project-specific information
+required:
+  - start_task
+  - url
+properties:
+  url:
+    title: Local url
+    type: string
+    description: "Local url where FE is running (i.e. `http://localhost:3000`)"
+  node_version:
+    title: Node verison
+    type: string
+    description: "Node version used to run the project"
+    default: "14"

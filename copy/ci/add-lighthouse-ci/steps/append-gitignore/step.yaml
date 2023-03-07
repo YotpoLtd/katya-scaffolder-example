@@ -1,0 +1,6 @@
+id: fs-append
+name: Update .gitignore
+action: fs:append
+input:
+  file: .gitignore
+  text: '.lighthouseci'

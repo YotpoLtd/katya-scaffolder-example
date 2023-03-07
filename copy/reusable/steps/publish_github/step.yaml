@@ -1,0 +1,20 @@
+id: publish-repo
+name: Publish
+action: publish:github
+input:
+  allowedHosts: [ 'github.com' ]
+  access: YotpoLtd/${{ parameters.owner }}
+  description: ${{ parameters.description }}
+  repoUrl: 'github.com?owner=YotpoLtd&repo=${{ parameters.repo_name }}'
+  defaultBranch: 'master'
+  repoVisibility: 'private'
+  requireCodeOwnerReviews: true
+  deleteBranchOnMerge: true
+  allowMergeCommit: true
+  allowSquashMerge: false
+  allowRebaseMerge: false
+  topics:
+    - k8s
+    - team-${{ parameters.owner }}
+    - ${{ parameters.product_line }}
+    - scaffolded

@@ -1,0 +1,18 @@
+title: Provide information for the generated parts
+  required:
+    - start_task
+    - url
+properties:
+  start_task:
+    title: Task to start frontend
+    type: string
+    description: "npm task to start FE locally _IN PRODUCTION MODE_ (i.e. `npm run start:prod` or `vue-cli-service serve --mode production`)"
+  url:
+    title: Local url
+    type: string
+    description: "Local url where FE is running (i.e. `http://localhost:3000`)"
+  node_version:
+    title: Node verison
+    type: string
+    description: "Node version used to run the project"
+    default: "14"

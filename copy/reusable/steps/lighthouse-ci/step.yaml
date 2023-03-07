@@ -1,0 +1,11 @@
+id: fetch-base
+name: Fetch Base
+action: fetch:template
+input:
+  url: ./template
+  values:
+    repo_name: ${{parameters.repo_name}}
+    start_task: ${{parameters.start_task}}
+    url: ${{parameters.url}}
+    node_version: ${{parameters.node_version}}
+    lhci_version: ${{'0.10.x' if parameters.node_version == "16" else '0.8.x'}}
