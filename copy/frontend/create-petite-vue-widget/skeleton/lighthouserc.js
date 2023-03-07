@@ -6,7 +6,7 @@ const cpuSlowdownMultiplier = preset === 'mobile' ? 2.5 : 1.5
 module.exports = {
   ci: {
     collect: {
-      startServerCommand: 'npm run serve:prod',
+      startServerCommand: 'npm run lhci:run',
       startServerReadyPattern: 'compiled|successfully|served',
       startServerReadyTimeout: 60000,
       url: ['http://localhost:8080'],

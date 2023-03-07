@@ -1,8 +1,13 @@
+# ${{values.widgetName}}
+ 
+# ${{values.widget-ame}}
+
+# ${{values.repo_name}}
 
 # put APPLITOOLS_API_KEY into env and secrets 
 
 
-# ${{vlaues.repo_name}}
+# ${{values.repo_name}}
 
 [![CI](https://github.com/YotpoLtd/widget-promoted-products/actions/workflows/build.yaml/badge.svg?branch=master)](https://github.com/YotpoLtd/widget-promoted-products/actions/workflows/build.yaml)
 
@@ -53,7 +58,7 @@ npm run test:e2e:visual-regression (headless)
 2. open dev console
 3. enter following commands:
    var schema = {YOUR_LOCAL_SCHEMA_FROM_CUSTOMIZATION_SCHEMA}
-   sessionStorage.setItem('${{ values.widget_type }}_schema_override', JSON.stringify(schema))
+   sessionStorage.setItem('${{ values.widgetName }}_schema_override', JSON.stringify(schema))
 
 ### Check js-build in production environment
 

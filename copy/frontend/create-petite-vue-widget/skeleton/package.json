@@ -1,5 +1,5 @@
 {
-  "name": "${{vlaues.repo_name}}",
+  "name": "${{values.repo_name}}",
   "private": true,
   "version": "0.0.1",
   "engines": {
@@ -11,6 +11,7 @@
     "lint:fix": "eslint . --ext .ts --fix",
     "serve": "tsc && vite",
     "serve:prod": "npm run build && vite preview",
+    "lhci:run": "npm run serve:prod",
     "build": "tsc && vite build",
     "build:chrome": "npm run build && vite build --mode development && ./build/copy_to_overrides.sh",
     "preview": "vite preview",

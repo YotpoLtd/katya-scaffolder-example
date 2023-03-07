@@ -1,10 +1,10 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: ${{ parameters.repo_name }}
-  description: ${{ parameters.description }}
+  name: ${{ values.repo_name }}
+  description: ${{ values.description }}
   annotations:
-    github.com/project-slug: YotpoLtd/${{ parameters.repo_name }}
+    github.com/project-slug: YotpoLtd/${{ values.repo_name }}
     backstage.io/techdocs-ref: dir:.
   tags:
     - widget-v3
@@ -13,5 +13,5 @@ metadata:
 spec:
   type: widget
   lifecycle: production
-  owner: ${{ parameters.owner }}
-  system: ${{ parameters.system }}
+  owner: ${{ values.owner }}
+  system: ${{ values.system }}

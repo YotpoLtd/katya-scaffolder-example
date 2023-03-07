@@ -1,4 +1,4 @@
-id: publish-repo
+id: publish_repo
 name: Publish
 action: publish:github
 input:

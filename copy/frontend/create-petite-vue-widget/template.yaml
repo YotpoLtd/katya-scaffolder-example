@@ -16,25 +16,27 @@ spec:
       required:
         - repo_name
         - product_line
-        - product
-        - project_name
       properties:
         repo_name:
           title: Repo name
           type: string
           description: Name of the repo to be created
+          default: "widget-katya-test"
+          pattern: "^widget-([a-z]+-?)+$"
         description:
           title: Repo description
           type: string
           description: Repo description
+          default: "Description"
+        slack_channel:
+          title: Slack channel name
+          type: string
+          description: Slack channel for deployment alerts
+          default: "dev-alerts"
         system:
           title: System
           type: string
-          description: Project system #todo
-        project_name:
-          title: Project name
-          type: string
-          description: Name of the project for k8s
+          default: "test" # todo
         product_line:
           $yaml: ../../reusable/parameters/product_line.yaml
         owner:
@@ -49,20 +51,42 @@ spec:
         url: ./skeleton
         values:
           product_line: ${{ parameters.product_line }}
-          repo_name: ${{ parameters.repo_name }} # widget-promoted-products
+          repo_name: ${{ parameters.repo_name }} # widget-cool-name
+          widgetName: ${{ parameters.repo_name | replace("widget", "") | replace("-", " ") | title | replace(" ", "") }} # CoolName
+          widget-name: ${{ parameters.repo_name | replace("widget-", "")  }} #cool-name
           description: ${{ parameters.description }}
           system: ${{ parameters.system }}
-          owner: ${{ parameters.system | lower | replace("-admins, "") }}
-          project_name: ${{ parameters.project_name }}
-          widget_type: ${{ parameters.repo_name | replace("widget", "") | replace("-", " ") | capitalize | join }}
+          owner: ${{ parameters.owner | lower | replace("-admins", "") }}
+
 
     - $yaml: ../../ci/add-lighthouse-ci/steps/add-lhci-template/step.yaml
     - $yaml: ../../ci/hydrate-pr-description/steps/add-gha-template/step.yaml
 
-    - $yaml: ../../reusable/steps/create-github-repo/step.yaml
-
+    - id: publish_repo
+      name: Publish
+      action: publish:github
+      input:
+        allowedHosts: [ 'github.com' ]
+        access: YotpoLtd/${{ parameters.owner }}
+        description: ${{ parameters.description }}
+        repoUrl: 'github.com?owner=YotpoLtd&repo=${{ parameters.repo_name }}'
+        defaultBranch: 'master'
+        repoVisibility: 'private'
+        requireCodeOwnerReviews: true
+        deleteBranchOnMerge: true
+        allowMergeCommit: true
+        allowSquashMerge: false
+        allowRebaseMerge: false
+        topics:
+          - k8s
+          - team-${{ parameters.owner }}
+          - ${{ parameters.product_line }}
+          - scaffolded
   output:
-    remoteUrl: ${{ steps.publish.output.remoteUrl }}
     links:
+      - url: ${{steps.publish_repo.output.remoteUrl }}
+        title: "Go to freshly created repo"
       - url: https://github.com/YotpoLtd/terraform-github/tree/master/RnD-teams
-        text: "Add the new repository in terraform-github"
+        title: "Add ${{ parameters.repo_name }} to your team in terraform-github"
+
+
