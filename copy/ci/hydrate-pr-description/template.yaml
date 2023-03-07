@@ -1,0 +1,49 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: copy-add-hydrate-action
+  title: Copy Add Jira task details to each PR description
+  description: Add Github Actions workflow to hydrate PR description with Jira task details
+  tags:
+    - jira
+    - ci
+    - gha
+spec:
+  owner: Ivys
+  type: infrastructure
+  parameters:
+    - title: Just give us your repo name!
+      required:
+        - repo_name
+      properties:
+        repo_name:
+          title: Repo Name
+          type: string
+          description: "Name of the repo (without YotpoLtd)"
+  steps:
+    - $yaml: ./steps/add-gha-template/step.yaml
+
+    - id: fetch-repo
+      name: Fetch Repo
+      action: fetch:plain
+      input:
+        url: "https://github.com/YotpoLtd/${{ parameters.repo_name }}/blob/master"
+
+    - id: publish
+      name: Publish
+      action: publish:github:pull-request
+      input:
+        repoUrl: "github.com?owner=YotpoLtd&repo=${{ parameters.repo_name }}"
+        title: "feat(ci): hydrate PR (IVYS-858)"
+        branchName: add-hydrate-action-${{ '' | now }}
+        description: |
+          🔼 Look, here's gonna appear a link to the Jira task for creating this scaffolder!
+
+          It looks for task key in PR title and in branch name and fetches infrmation from Jira.
+
+          Please read a bit more about [how this action works](https://github.com/YotpoLtd/ci-utils/tree/master/.github/actions/hydrate-pr-description#how-it-works)
+
+  output:
+    links:
+      - url: ${{steps.publish.output.remoteUrl}}
+        text: "Go to freshly created PR "
