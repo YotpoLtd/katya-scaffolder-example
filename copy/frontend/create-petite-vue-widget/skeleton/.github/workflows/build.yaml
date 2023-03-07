@@ -50,6 +50,6 @@ jobs:
     secrets: inherit
     with:
       PROJECT_NAME: ${{values.repo_name}}
-      NEW_TEMPLATE_WIDGET_TYPE: 'PromotedProducts'
+      NEW_TEMPLATE_WIDGET_TYPE: ${{values.widgetType}}
       SLACK_ROOMS: pixels-changelog
       DEPLOY_CUSTOMIZATIONS: true

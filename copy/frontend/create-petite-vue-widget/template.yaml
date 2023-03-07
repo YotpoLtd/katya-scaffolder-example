@@ -27,6 +27,10 @@ spec:
           title: Repo description
           type: string
           description: Repo description
+        system:
+          title: System
+          type: string
+          description: Project system #todo
         project_name:
           title: Project name
           type: string
@@ -45,8 +49,12 @@ spec:
         url: ./skeleton
         values:
           product_line: ${{ parameters.product_line }}
-          repo_name: ${{ parameters.repo_name }}
-
+          repo_name: ${{ parameters.repo_name }} # widget-promoted-products
+          description: ${{ parameters.description }}
+          system: ${{ parameters.system }}
+          owner: ${{ parameters.system | lower | replace("-admins, "") }}
+          project_name: ${{ parameters.project_name }}
+          widget_type: ${{ parameters.repo_name | replace("widget", "") | replace("-", " ") | capitalize | join }}
 
     - $yaml: ../../ci/add-lighthouse-ci/steps/add-lhci-template/step.yaml
     - $yaml: ../../ci/hydrate-pr-description/steps/add-gha-template/step.yaml

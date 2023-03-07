@@ -1,0 +1,6 @@
+/cypress/
+/build
+/dist
+*.config.*
+*-env.*
+*customizations.models.*

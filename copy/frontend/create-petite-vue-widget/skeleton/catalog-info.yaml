@@ -1,0 +1,17 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ${{ parameters.repo_name }}
+  description: ${{ parameters.description }}
+  annotations:
+    github.com/project-slug: YotpoLtd/${{ parameters.repo_name }}
+    backstage.io/techdocs-ref: dir:.
+  tags:
+    - widget-v3
+    - ugc
+    - shopper-experience
+spec:
+  type: widget
+  lifecycle: production
+  owner: ${{ parameters.owner }}
+  system: ${{ parameters.system }}

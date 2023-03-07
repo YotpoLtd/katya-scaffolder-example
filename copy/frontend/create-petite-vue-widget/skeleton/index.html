@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <link rel="icon" href="/favicon.ico" />
+  <title>${{values.repo_name}}</title>
+</head>
+<body style="margin: 0">
+<div class="widget-page">
+  <!--      todo-->
+  <div class="yotpo-widget-instance yotpo-promoted-products-widget" data-yotpo-instance-id="14" data-yotpo-product-id="7456291979477" data-yotpo-section-id="main"></div>
+</div>
+<script type="text/javascript">
+  var yotpoWidgetsContainer = yotpoWidgetsContainer || {}
+
+  var script = document.createElement('script')
+  script.setAttribute('type', 'text/javascript')
+  script.setAttribute('src', '/js/app.js')
+  script.onload = function () {
+    if (yotpoWidgetsContainer['${{values.widget_type}}']) {
+      initWidget()
+    } else {
+      console.error('widget not loaded')
+    }
+  }
+
+  function injectScript(url) {
+    const script = document.createElement('script')
+    script.src = url
+    document.head.appendChild(script)
+  }
+
+  function injectWidgetLoader(guid, useCdn) {
+    const baseUrl = useCdn ? 'https://cdn-widgetsrepository.yotpo.com' : 'https://widgetsrepository.yotpo.com'
+    injectScript(baseUrl + '/v1/loader/' + guid + '?all=true')
+  }
+
+  function setInstaceId(instanceId) {
+    const element = document.querySelector('.yotpo-widget-instance')
+    element.setAttribute('data-yotpo-instance-id', instanceId)
+  }
+
+  function getQueryParams() {
+    // simulate situations locally (user not logged in..)
+    const queryString = window.location.search.substring(1)
+    const params = {}
+    const queries = queryString.split('&')
+    queries.forEach(function (indexQuery) {
+      const indexPair = indexQuery.split('=')
+
+      const queryKey = decodeURIComponent(indexPair[0]).toLowerCase()
+      const queryValue = decodeURIComponent(indexPair.length > 1 ? indexPair[1] : '')
+
+      params[queryKey] = queryValue
+    })
+    return params
+  }
+
+  function initWidget() {
+    setTimeout(function () {
+      var widget = yotpoWidgetsContainer['${{values.widget_type}}']()
+      var merchantData = {
+        //todo
+        guid: 'eRxKnj58u1tO0iFkjWVldkVSymwLydHsg4IKulTB'
+      }
+      var element = document.querySelector('.yotpo-widget-instance')
+      const widgetOptions = {
+        element: element,
+        metadata: {
+          customizations: {
+            // default for local run
+          },
+        },
+        merchantData: merchantData,
+        storage: localStorage,
+        windowElement: window,
+        areFontsLoaded: false,
+      }
+      widget.init(widgetOptions)
+      widget.run()
+    }, 200)
+  }
+
+  const queryParams = getQueryParams()
+  if (queryParams.load_real_widget && queryParams.widget_instance_id && queryParams.guid) {
+    setInstaceId(queryParams.widget_instance_id)
+    injectWidgetLoader(queryParams.guid, queryParams.use_cdn)
+  } else {
+    if (queryParams['load_css_override'] === 'true') {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = '/css-override-test.css'
+      document.head.appendChild(link)
+    }
+  }
+  document.head.appendChild(script)
+</script>
+</body>
+</html>

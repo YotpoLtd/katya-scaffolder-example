@@ -1,0 +1,52 @@
+{
+  "name": "${{vlaues.repo_name}}",
+  "private": true,
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=16.17.1",
+    "npm": ">=8.15.0"
+  },
+  "scripts": {
+    "lint": "eslint --max-warnings=0 --no-fix . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "serve": "tsc && vite",
+    "serve:prod": "npm run build && vite preview",
+    "build": "tsc && vite build",
+    "build:chrome": "npm run build && vite build --mode development && ./build/copy_to_overrides.sh",
+    "preview": "vite preview",
+    "test:e2e": "npx cypress open",
+    "test:e2e:headless": "npx cypress run --headless --record --key $CYPRESS_PROJECT_KEY --config --projectId $CYPRESS_PROJECT_ID",
+    "test:e2e:cypress:run:local": "concurrently  --kill-others --success first \"npm run serve\" \"npm run test:e2e\"",
+    "test:e2e:cypress:run:prod": "concurrently  --kill-others --success first \"npm run serve:prod\" \"npm run test:e2e\"",
+    "test:e2e:cypress:run:headless": "concurrently --kill-others --success first \"npm run serve:prod\" \"npm run test:e2e:headless\""
+  },
+  "dependencies": {
+    "@ugc-storefront/core": "^1.1.2",
+    "axios": "^1.1.3",
+    "petite-vue": "^0.4.1"
+  },
+  "devDependencies": {
+    "@applitools/eyes-cypress": "^3.27.8",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "^18.11.9",
+    "@types/uuid": "^8.3.4",
+    "@typescript-eslint/eslint-plugin": "^5.46.1",
+    "@typescript-eslint/parser": "^5.46.1",
+    "@vue/reactivity": "^3.2.45",
+    "@vue/shared": "^3.2.45",
+    "concurrently": "^7.6.0",
+    "cypress": "^11.2.0",
+    "eslint": "8.22.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "prettier": "^2.8.1",
+    "terser": "^5.16.1",
+    "typescript": "^4.9.3",
+    "uuid": "^9.0.0",
+    "vite": "^3.2.3"
+  },
+  "files": [
+    "dist"
+  ]
+}
