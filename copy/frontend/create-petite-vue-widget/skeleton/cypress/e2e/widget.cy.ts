@@ -6,6 +6,6 @@ describe('Widget', () => {
     cy.visit('http://localhost:8080', {
       timeout: 4000,
     })
-    cy.get('.yotpo-promoted-products-widget').should('be.visible') // todo
+    cy.get('.yotpo-${{ values.widget_name }}-widget').should('be.visible')
   })
 })

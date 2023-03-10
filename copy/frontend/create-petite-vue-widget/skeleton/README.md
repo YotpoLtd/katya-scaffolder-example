@@ -1,15 +1,17 @@
-# ${{values.widgetName}}
- 
-# ${{values.widget-ame}}
-
-# ${{values.repo_name}}
-
-# put APPLITOOLS_API_KEY into env and secrets 
+# ${{ values.widget_name }}
+# ${{ values.widgetName }}
+# ${{ values.repo_name }}
 
 
-# ${{values.repo_name}}
+[![CI](https://github.com/YotpoLtd/${{ values.repo_name }}/actions/workflows/build.yaml/badge.svg?branch=master)](https://github.com/YotpoLtd/${{ values.repo_name }}/actions/workflows/build.yaml)
 
-[![CI](https://github.com/YotpoLtd/widget-promoted-products/actions/workflows/build.yaml/badge.svg?branch=master)](https://github.com/YotpoLtd/widget-promoted-products/actions/workflows/build.yaml)
+## Node Version
+
+`16.17.1`
+
+## NPM Version
+
+`8.15.0`
 
 ## Project setup
 
@@ -64,7 +66,7 @@ npm run test:e2e:visual-regression (headless)
 
 1. Enable local overrides (Developer Tools -> Sources -> Enable Local Overrides)
 2. In the sources panel, create a new folder called js-overrides (best inside Development folder not inside the project folder)
-3. Refresh and locate the relevant app.js under Network (the one sent from widget-promoted-products), right click and select Save for overrides
+3. Refresh and locate the relevant app.js under Network (the one sent from ${{ values.repo_name }}), right click and select Save for overrides
 4. In the root folder of your module project, run npm run build:chrome
 
 ### Check widget version in production environment

@@ -53,7 +53,7 @@ spec:
           product_line: ${{ parameters.product_line }}
           repo_name: ${{ parameters.repo_name }} # widget-cool-name
           widgetName: ${{ parameters.repo_name | replace("widget", "") | replace("-", " ") | title | replace(" ", "") }} # CoolName
-          widget-name: ${{ parameters.repo_name | replace("widget-", "")  }} #cool-name
+          widget_name: ${{ parameters.repo_name | replace("widget-", "")  }} #cool-name
           description: ${{ parameters.description }}
           system: ${{ parameters.system }}
           owner: ${{ parameters.owner | lower | replace("-admins", "") }}
@@ -62,26 +62,8 @@ spec:
     - $yaml: ../../ci/add-lighthouse-ci/steps/add-lhci-template/step.yaml
     - $yaml: ../../ci/hydrate-pr-description/steps/add-gha-template/step.yaml
 
-    - id: publish_repo
-      name: Publish
-      action: publish:github
-      input:
-        allowedHosts: [ 'github.com' ]
-        access: YotpoLtd/${{ parameters.owner }}
-        description: ${{ parameters.description }}
-        repoUrl: 'github.com?owner=YotpoLtd&repo=${{ parameters.repo_name }}'
-        defaultBranch: 'master'
-        repoVisibility: 'private'
-        requireCodeOwnerReviews: true
-        deleteBranchOnMerge: true
-        allowMergeCommit: true
-        allowSquashMerge: false
-        allowRebaseMerge: false
-        topics:
-          - k8s
-          - team-${{ parameters.owner }}
-          - ${{ parameters.product_line }}
-          - scaffolded
+    - $yaml: ../../reusable/steps/create-github-repo/step.yaml
+
   output:
     links:
       - url: ${{steps.publish_repo.output.remoteUrl }}

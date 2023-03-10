@@ -38,7 +38,7 @@ module.exports = {
         'errors-in-console': ['warn', { maxLength: 0 }],
         'no-vulnerable-libraries': ['warn', { maxLength: 0 }],
         'first-contentful-paint': ['warn', { maxNumericValue: 2000 }],
-        'user-timings:yotpo-promoted-products-widget-loaded': ['error', { maxNumericValue: 700 }],
+        'user-timings:yotpo-${{ values.widget_name }}-widget-loaded': ['error', { maxNumericValue: 700 }],
       },
     },
   },

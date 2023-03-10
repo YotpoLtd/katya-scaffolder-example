@@ -1,0 +1,3 @@
+.yotpo-${{ values.widget_name }}-widget-override-css {
+  text-align: right;
+}

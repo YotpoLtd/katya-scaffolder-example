@@ -1,13 +1,12 @@
 .DS_Store
-.idea
 /s3_dist
-
 
 # local env files
 .env
 .env.local
 .env.*.local
 
+.eslintcache
 # Log files
 logs
 *.log

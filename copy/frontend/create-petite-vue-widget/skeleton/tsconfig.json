@@ -13,7 +13,7 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "baseUrl": ".",
-    "typeRoots": ["@ugc-storefront/core"],
+    "typeRoots": ["widget-initializer/types"],
     "types": ["cypress", "node"],
     "paths": {
       "@/*": ["src/*"]

@@ -1,0 +1,32 @@
+{
+  "type": "widget_page",
+  "widgetTypeDisplayName": "Promoted Products Widget",
+  "displaySaveAndPublishPreviewHeader": true,
+  "hideLoaderScriptOnPublish": false,
+  "canRevertAttributes": true,
+  "showWhiteBackground": true,
+  "widgetHeaderMetaData": {
+    "tooltipSection": {
+      "title": "This preview uses example data",
+      "content": "This preview uses example data to\n show how your widget will appear\n to shoppers. Some functionality\n might not be available."
+    }
+  },
+  "backButtonUrlOverride": "https://reviews.yotpo.com/#/display-reviews/on-site-widgets",
+  "publishMetaData": {
+    "headerText": "Add the Promoted Products to your store",
+    "loaderScriptText": "1.\tIf you haven’t done so already, start by copying and pasting Yotpo’s script to your page:",
+    "loaderLanguageCode": "{{ localization.language.iso_code | escape }}",
+    "contentText": "2.\tNavigate to the page you want to add the widget to and paste this code snippet into your site code:",
+    "hidePublishButton": true,
+    "codeTemplate": "<div class=\"yotpo-widget-instance\" data-yotpo-instance-id=\"{{widget_instance_id}}\" data-yotpo-product-id=\"{{product.id}}\" data-yotpo-cart-product-id=\"{{item.product.id}}\" data-yotpo-section-id=\"{{template.name}}\" data-yotpo-language-code=\"{{ localization.language.iso_code | escape }}\"></div>",
+    "buttonText": "Publish"
+  },
+  "defaults": {
+    "view-primary-font": "Nunito Sans@700|https://cdn-widgetsrepository.yotpo.com/web-fonts/css/nunito_sans/v1/nunito_sans_700.css",
+    "view-text-color": "#202020",
+    "view-primary-color": "#2e4f7c",
+    "view-background-color": "transparent"
+  },
+  "data": [],
+  "stepsConfig": []
+}
