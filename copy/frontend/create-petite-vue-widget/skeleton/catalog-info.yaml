@@ -7,9 +7,9 @@ metadata:
     github.com/project-slug: YotpoLtd/${{ values.repo_name }}
     backstage.io/techdocs-ref: dir:.
   tags:
+    - lighthouse
     - widget-v3
-    - ugc
-    - shopper-experience
+    - ${{ values.product_line }}
 spec:
   type: widget
   lifecycle: production
