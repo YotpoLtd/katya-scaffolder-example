@@ -25,8 +25,789 @@
     "view-primary-font": "Nunito Sans@700|https://cdn-widgetsrepository.yotpo.com/web-fonts/css/nunito_sans/v1/nunito_sans_700.css",
     "view-text-color": "#202020",
     "view-primary-color": "#2e4f7c",
-    "view-background-color": "transparent"
+    "view-background-color": "transparent",
+    "welcome-text": "Good morning"
   },
-  "data": [],
-  "stepsConfig": []
+
+  "stepsConfig": [],
+  "data": [
+    {
+      "name": "General Settings",
+      "iconUrl": "general-settings-icon.svg",
+      "categories": [
+        {
+          "noBorder": true,
+          "sections": [
+            {
+              "fields": [
+                {
+                  "default": "",
+                  "type": "text"
+                },
+                {
+                  "attribute": "welcome-text",
+                  "name": "Welcome text",
+                  "type": "dropdown",
+                  "default": "Good morning",
+                  "alertMessage": {
+                    "alertTitle": "You've changed your widget welcome text(it's an example customization value)",
+                    "alertSubtitle": "Please make sure to delete any duplicate code you might have on your store.",
+                    "status": "warning",
+                    "icon": true
+                  },
+                  "constraints": {
+                    "validValues": [
+                      {
+                        "display": "Good morning",
+                        "value": "Good morning"
+                      },
+                      {
+                        "display": "Good night",
+                        "value": "good night"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "COLORS",
+              "fields": [
+                {
+                  "attribute": "view-primary-color",
+                  "name": "Primary color",
+                  "type": "color",
+                  "regexToMatchForSuggestedValues": "color"
+                },
+                {
+                  "attribute": "view-text-color",
+                  "name": "Text color",
+                  "type": "color",
+                  "regexToMatchForSuggestedValues": "color"
+                },
+                {
+                  "attribute": "view-background-color",
+                  "name": "Background color",
+                  "type": "color",
+                  "regexToMatchForSuggestedValues": "color"
+                }
+              ]
+            },
+            {
+              "name": "STYLE",
+              "fields": [
+                {
+                  "attribute": "view-primary-font",
+                  "name": "Primary font",
+                  "type": "font_style",
+                  "constraints": {
+                    "validValues": [
+                      {
+                        "font": "Lato",
+                        "styles": [
+                          {
+                            "name": "100",
+                            "displayImage": "100.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/lato/v1/lato_100.css"
+                          },
+                          {
+                            "name": "100i",
+                            "displayImage": "100i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/lato/v1/lato_100i.css"
+                          },
+                          {
+                            "name": "300",
+                            "displayImage": "300.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/lato/v1/lato_300.css"
+                          },
+                          {
+                            "name": "300i",
+                            "displayImage": "300i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/lato/v1/lato_300i.css"
+                          },
+                          {
+                            "name": "400",
+                            "displayImage": "400.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/lato/v1/lato_400.css"
+                          },
+                          {
+                            "name": "400i",
+                            "displayImage": "400i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/lato/v1/lato_400i.css"
+                          },
+                          {
+                            "name": "700",
+                            "displayImage": "700.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/lato/v1/lato_700.css"
+                          },
+                          {
+                            "name": "700i",
+                            "displayImage": "700i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/lato/v1/lato_700i.css"
+                          },
+                          {
+                            "name": "900",
+                            "displayImage": "900.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/lato/v1/lato_900.css"
+                          },
+                          {
+                            "name": "900i",
+                            "displayImage": "900i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/lato/v1/lato_900i.css"
+                          }
+                        ],
+                        "displayImage": "lato.svg"
+                      },
+                      {
+                        "font": "Lora",
+                        "styles": [
+                          {
+                            "name": "400",
+                            "displayImage": "400.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/lora/v1/lora_400.css"
+                          },
+                          {
+                            "name": "400i",
+                            "displayImage": "400i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/lora/v1/lora_400i.css"
+                          },
+                          {
+                            "name": "500",
+                            "displayImage": "500.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/lora/v1/lora_500.css"
+                          },
+                          {
+                            "name": "600",
+                            "displayImage": "600.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/lora/v1/lora_600.css"
+                          },
+                          {
+                            "name": "700",
+                            "displayImage": "700.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/lora/v1/lora_700.css"
+                          },
+                          {
+                            "name": "700i",
+                            "displayImage": "700i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/lora/v1/lora_700i.css"
+                          }
+                        ],
+                        "displayImage": "lora.svg"
+                      },
+                      {
+                        "font": "Montserrat",
+                        "styles": [
+                          {
+                            "name": "100",
+                            "displayImage": "100.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/montserrat/v1/montserrat_100.css"
+                          },
+                          {
+                            "name": "100i",
+                            "displayImage": "100i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/montserrat/v1/montserrat_100i.css"
+                          },
+                          {
+                            "name": "200",
+                            "displayImage": "200.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/montserrat/v1/montserrat_200.css"
+                          },
+                          {
+                            "name": "200i",
+                            "displayImage": "200i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/montserrat/v1/montserrat_200i.css"
+                          },
+                          {
+                            "name": "300",
+                            "displayImage": "300.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/montserrat/v1/montserrat_300.css"
+                          },
+                          {
+                            "name": "300i",
+                            "displayImage": "300i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/montserrat/v1/montserrat_300i.css"
+                          },
+                          {
+                            "name": "400",
+                            "displayImage": "400.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/montserrat/v1/montserrat_400.css"
+                          },
+                          {
+                            "name": "400i",
+                            "displayImage": "400i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/montserrat/v1/montserrat_400i.css"
+                          },
+                          {
+                            "name": "500",
+                            "displayImage": "500.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/montserrat/v1/montserrat_500.css"
+                          },
+                          {
+                            "name": "500i",
+                            "displayImage": "500i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/montserrat/v1/montserrat_500i.css"
+                          },
+                          {
+                            "name": "600",
+                            "displayImage": "600.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/montserrat/v1/montserrat_600.css"
+                          },
+                          {
+                            "name": "600i",
+                            "displayImage": "600i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/montserrat/v1/montserrat_600i.css"
+                          },
+                          {
+                            "name": "700",
+                            "displayImage": "700.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/montserrat/v1/montserrat_700.css"
+                          },
+                          {
+                            "name": "700i",
+                            "displayImage": "700i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/montserrat/v1/montserrat_700i.css"
+                          },
+                          {
+                            "name": "800",
+                            "displayImage": "800.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/montserrat/v1/montserrat_800.css"
+                          },
+                          {
+                            "name": "800i",
+                            "displayImage": "800i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/montserrat/v1/montserrat_800i.css"
+                          },
+                          {
+                            "name": "900",
+                            "displayImage": "900.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/montserrat/v1/montserrat_900.css"
+                          },
+                          {
+                            "name": "900i",
+                            "displayImage": "900i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/montserrat/v1/montserrat_900i.css"
+                          }
+                        ],
+                        "displayImage": "montserrat.svg"
+                      },
+                      {
+                        "font": "Nunito Sans",
+                        "styles": [
+                          {
+                            "name": "200",
+                            "displayImage": "200.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/nunito_sans/v1/nunito_sans_200.css"
+                          },
+                          {
+                            "name": "200i",
+                            "displayImage": "200i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/nunito_sans/v1/nunito_sans_200i.css"
+                          },
+                          {
+                            "name": "300",
+                            "displayImage": "300.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/nunito_sans/v1/nunito_sans_300.css"
+                          },
+                          {
+                            "name": "300i",
+                            "displayImage": "300i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/nunito_sans/v1/nunito_sans_300i.css"
+                          },
+                          {
+                            "name": "400",
+                            "displayImage": "400.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/nunito_sans/v1/nunito_sans_400.css"
+                          },
+                          {
+                            "name": "400i",
+                            "displayImage": "400i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/nunito_sans/v1/nunito_sans_400i.css"
+                          },
+                          {
+                            "name": "600",
+                            "displayImage": "600.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/nunito_sans/v1/nunito_sans_600.css"
+                          },
+                          {
+                            "name": "600i",
+                            "displayImage": "600i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/nunito_sans/v1/nunito_sans_600i.css"
+                          },
+                          {
+                            "name": "700",
+                            "displayImage": "700.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/nunito_sans/v1/nunito_sans_700.css"
+                          },
+                          {
+                            "name": "700i",
+                            "displayImage": "700i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/nunito_sans/v1/nunito_sans_700i.css"
+                          },
+                          {
+                            "name": "800",
+                            "displayImage": "800.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/nunito_sans/v1/nunito_sans_800.css"
+                          },
+                          {
+                            "name": "800i",
+                            "displayImage": "800i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/nunito_sans/v1/nunito_sans_800i.css"
+                          },
+                          {
+                            "name": "900",
+                            "displayImage": "900.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/nunito_sans/v1/nunito_sans_900.css"
+                          },
+                          {
+                            "name": "900i",
+                            "displayImage": "900i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/nunito_sans/v1/nunito_sans_900i.css"
+                          }
+                        ],
+                        "displayImage": "nunito-sans.svg"
+                      },
+                      {
+                        "font": "Open Sans",
+                        "styles": [
+                          {
+                            "name": "300",
+                            "displayImage": "300.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/open_sans/v1/open_sans_300.css"
+                          },
+                          {
+                            "name": "400",
+                            "displayImage": "400.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/open_sans/v1/open_sans_400.css"
+                          },
+                          {
+                            "name": "400i",
+                            "displayImage": "400i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/open_sans/v1/open_sans_400i.css"
+                          },
+                          {
+                            "name": "600",
+                            "displayImage": "600.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/open_sans/v1/open_sans_600.css"
+                          },
+                          {
+                            "name": "600i",
+                            "displayImage": "600i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/open_sans/v1/open_sans_600i.css"
+                          },
+                          {
+                            "name": "700",
+                            "displayImage": "700.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/open_sans/v1/open_sans_700.css"
+                          },
+                          {
+                            "name": "700i",
+                            "displayImage": "700i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/open_sans/v1/open_sans_700i.css"
+                          },
+                          {
+                            "name": "800",
+                            "displayImage": "800.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/open_sans/v1/open_sans_800.css"
+                          }
+                        ],
+                        "displayImage": "open-sans.svg"
+                      },
+                      {
+                        "font": "Oswald",
+                        "styles": [
+                          {
+                            "name": "200",
+                            "displayImage": "200.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/oswald/v1/oswald_200.css"
+                          },
+                          {
+                            "name": "300",
+                            "displayImage": "300.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/oswald/v1/oswald_300.css"
+                          },
+                          {
+                            "name": "400",
+                            "displayImage": "400.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/oswald/v1/oswald_400.css"
+                          },
+                          {
+                            "name": "500",
+                            "displayImage": "500.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/oswald/v1/oswald_500.css"
+                          },
+                          {
+                            "name": "600",
+                            "displayImage": "600.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/oswald/v1/oswald_600.css"
+                          },
+                          {
+                            "name": "700",
+                            "displayImage": "700.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/oswald/v1/oswald_700.css"
+                          }
+                        ],
+                        "displayImage": "oswald.svg"
+                      },
+                      {
+                        "font": "PT Serif",
+                        "styles": [
+                          {
+                            "name": "400",
+                            "displayImage": "400.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/pt_serif/v1/pt_serif_400.css"
+                          },
+                          {
+                            "name": "400i",
+                            "displayImage": "400i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/pt_serif/v1/pt_serif_400i.css"
+                          },
+                          {
+                            "name": "700",
+                            "displayImage": "700.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/pt_serif/v1/pt_serif_700.css"
+                          },
+                          {
+                            "name": "700i",
+                            "displayImage": "700i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/pt_serif/v1/pt_serif_700i.css"
+                          }
+                        ],
+                        "displayImage": "pt-serif.svg"
+                      },
+                      {
+                        "font": "Raleway",
+                        "styles": [
+                          {
+                            "name": "100",
+                            "displayImage": "100.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/raleway/v1/raleway_100.css"
+                          },
+                          {
+                            "name": "100i",
+                            "displayImage": "100i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/raleway/v1/raleway_100i.css"
+                          },
+                          {
+                            "name": "200",
+                            "displayImage": "200.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/raleway/v1/raleway_200.css"
+                          },
+                          {
+                            "name": "200i",
+                            "displayImage": "200i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/raleway/v1/raleway_200i.css"
+                          },
+                          {
+                            "name": "300",
+                            "displayImage": "300.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/raleway/v1/raleway_300.css"
+                          },
+                          {
+                            "name": "300i",
+                            "displayImage": "300i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/raleway/v1/raleway_300i.css"
+                          },
+                          {
+                            "name": "400",
+                            "displayImage": "400.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/raleway/v1/raleway_400.css"
+                          },
+                          {
+                            "name": "400i",
+                            "displayImage": "400i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/raleway/v1/raleway_400i.css"
+                          },
+                          {
+                            "name": "500",
+                            "displayImage": "500.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/raleway/v1/raleway_500.css"
+                          },
+                          {
+                            "name": "500i",
+                            "displayImage": "500i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/raleway/v1/raleway_500i.css"
+                          },
+                          {
+                            "name": "600",
+                            "displayImage": "600.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/raleway/v1/raleway_600.css"
+                          },
+                          {
+                            "name": "600i",
+                            "displayImage": "600i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/raleway/v1/raleway_600i.css"
+                          },
+                          {
+                            "name": "700",
+                            "displayImage": "700.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/raleway/v1/raleway_700.css"
+                          },
+                          {
+                            "name": "700i",
+                            "displayImage": "700i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/raleway/v1/raleway_700i.css"
+                          },
+                          {
+                            "name": "800",
+                            "displayImage": "800.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/raleway/v1/raleway_800.css"
+                          },
+                          {
+                            "name": "800i",
+                            "displayImage": "800i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/raleway/v1/raleway_800i.css"
+                          },
+                          {
+                            "name": "900",
+                            "displayImage": "900.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/raleway/v1/raleway_900.css"
+                          },
+                          {
+                            "name": "900i",
+                            "displayImage": "900i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/raleway/v1/raleway_900i.css"
+                          }
+                        ],
+                        "displayImage": "raleway.svg"
+                      },
+                      {
+                        "font": "Roboto Slab",
+                        "styles": [
+                          {
+                            "name": "100",
+                            "displayImage": "100.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/roboto_slab/v1/roboto_slab_100.css"
+                          },
+                          {
+                            "name": "300",
+                            "displayImage": "300.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/roboto_slab/v1/roboto_slab_300.css"
+                          },
+                          {
+                            "name": "400",
+                            "displayImage": "400.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/roboto_slab/v1/roboto_slab_400.css"
+                          },
+                          {
+                            "name": "500",
+                            "displayImage": "500.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/roboto_slab/v1/roboto_slab_500.css"
+                          },
+                          {
+                            "name": "600",
+                            "displayImage": "600.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/roboto_slab/v1/roboto_slab_600.css"
+                          },
+                          {
+                            "name": "700",
+                            "displayImage": "700.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/roboto_slab/v1/roboto_slab_700.css"
+                          }
+                        ],
+                        "displayImage": "roboto-slab.svg"
+                      },
+                      {
+                        "font": "Roboto",
+                        "styles": [
+                          {
+                            "name": "100",
+                            "displayImage": "100.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/roboto/v1/roboto_100.css"
+                          },
+                          {
+                            "name": "100i",
+                            "displayImage": "100i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/roboto/v1/roboto_100i.css"
+                          },
+                          {
+                            "name": "300",
+                            "displayImage": "300.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/roboto/v1/roboto_300.css"
+                          },
+                          {
+                            "name": "300i",
+                            "displayImage": "300i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/roboto/v1/roboto_300i.css"
+                          },
+                          {
+                            "name": "400",
+                            "displayImage": "400.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/roboto/v1/roboto_400.css"
+                          },
+                          {
+                            "name": "400i",
+                            "displayImage": "400i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/roboto/v1/roboto_400i.css"
+                          },
+                          {
+                            "name": "500",
+                            "displayImage": "500.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/roboto/v1/roboto_500.css"
+                          },
+                          {
+                            "name": "500i",
+                            "displayImage": "500i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/roboto/v1/roboto_500i.css"
+                          },
+                          {
+                            "name": "700",
+                            "displayImage": "700.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/roboto/v1/roboto_700.css"
+                          },
+                          {
+                            "name": "700i",
+                            "displayImage": "700i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/roboto/v1/roboto_700i.css"
+                          },
+                          {
+                            "name": "900",
+                            "displayImage": "900.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/roboto/v1/roboto_900.css"
+                          },
+                          {
+                            "name": "900i",
+                            "displayImage": "900i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/roboto/v1/roboto_900i.css"
+                          }
+                        ],
+                        "displayImage": "roboto.svg"
+                      },
+                      {
+                        "font": "Source Sans Pro",
+                        "styles": [
+                          {
+                            "name": "200",
+                            "displayImage": "200.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/source_sans_pro/v1/source_sans_pro_200.css"
+                          },
+                          {
+                            "name": "200i",
+                            "displayImage": "200i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/source_sans_pro/v1/source_sans_pro_200i.css"
+                          },
+                          {
+                            "name": "300",
+                            "displayImage": "300.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/source_sans_pro/v1/source_sans_pro_300.css"
+                          },
+                          {
+                            "name": "300i",
+                            "displayImage": "300i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/source_sans_pro/v1/source_sans_pro_300i.css"
+                          },
+                          {
+                            "name": "400",
+                            "displayImage": "400.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/source_sans_pro/v1/source_sans_pro_400.css"
+                          },
+                          {
+                            "name": "400i",
+                            "displayImage": "400i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/source_sans_pro/v1/source_sans_pro_400i.css"
+                          },
+                          {
+                            "name": "600",
+                            "displayImage": "600.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/source_sans_pro/v1/source_sans_pro_600.css"
+                          },
+                          {
+                            "name": "600i",
+                            "displayImage": "600i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/source_sans_pro/v1/source_sans_pro_600i.css"
+                          },
+                          {
+                            "name": "700",
+                            "displayImage": "700.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/source_sans_pro/v1/source_sans_pro_700.css"
+                          },
+                          {
+                            "name": "700i",
+                            "displayImage": "700i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/source_sans_pro/v1/source_sans_pro_700i.css"
+                          },
+                          {
+                            "name": "900",
+                            "displayImage": "900.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/source_sans_pro/v1/source_sans_pro_900.css"
+                          },
+                          {
+                            "name": "900i",
+                            "displayImage": "900i.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/source_sans_pro/v1/source_sans_pro_900i.css"
+                          }
+                        ],
+                        "displayImage": "source-sans-pro.svg"
+                      },
+                      {
+                        "font": "Work Sans",
+                        "styles": [
+                          {
+                            "name": "100",
+                            "displayImage": "100.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/work_sans/v1/work_sans_100.css"
+                          },
+                          {
+                            "name": "200",
+                            "displayImage": "200.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/work_sans/v1/work_sans_200.css"
+                          },
+                          {
+                            "name": "300",
+                            "displayImage": "300.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/work_sans/v1/work_sans_300.css"
+                          },
+                          {
+                            "name": "400",
+                            "displayImage": "400.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/work_sans/v1/work_sans_400.css"
+                          },
+                          {
+                            "name": "500",
+                            "displayImage": "500.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/work_sans/v1/work_sans_500.css"
+                          },
+                          {
+                            "name": "600",
+                            "displayImage": "600.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/work_sans/v1/work_sans_600.css"
+                          },
+                          {
+                            "name": "700",
+                            "displayImage": "700.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/work_sans/v1/work_sans_700.css"
+                          },
+                          {
+                            "name": "800",
+                            "displayImage": "800.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/work_sans/v1/work_sans_800.css"
+                          },
+                          {
+                            "name": "900",
+                            "displayImage": "900.svg",
+                            "url": "https://cdn-widgetsrepository.yotpo.com/web-fonts/css/work_sans/v1/work_sans_900.css"
+                          }
+                        ],
+                        "displayImage": "work-sans.svg"
+                      }
+                    ]
+                  },
+                  "regexToMatchForSuggestedValues": "fonts-.*-font-name-and-url"
+                }
+              ]
+            },
+            {
+              "name": "CSS EDITOR",
+              "fields": [
+                {
+                  "name": "CSS editor",
+                  "default": "Edit CSS|https://reviews.yotpo.com",
+                  "type": "link"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }

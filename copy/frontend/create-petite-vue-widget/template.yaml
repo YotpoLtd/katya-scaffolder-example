@@ -36,13 +36,15 @@ spec:
         system:
           title: System
           type: string
-          default: "test" # todo
+          description: Name of the system this openapi is belonging to
+          ui:field: EntityPicker
+          ui:options:
+            allowedKinds:
+              - System
         product_line:
           $yaml: ../../reusable/parameters/product_line.yaml
         owner:
           $yaml: ../../reusable/parameters/owner.yaml
-
-    - $yaml: ../../ci/add-lighthouse-ci/steps/add-lhci-template/parameters.yaml
   steps:
     - id: template
       name: Fetch Skeleton + Template
@@ -55,11 +57,10 @@ spec:
           widgetName: ${{ parameters.repo_name | replace("widget", "") | replace("-", " ") | title | replace(" ", "") }} # CoolName
           widget_name: ${{ parameters.repo_name | replace("widget-", "")  }} #cool-name
           description: ${{ parameters.description }}
-          system: ${{ parameters.system }}
+          system: ${{ parameters.system | replace("system:", "") }}
           owner: ${{ parameters.owner | lower | replace("-admins", "") }}
 
 
-    - $yaml: ../../ci/add-lighthouse-ci/steps/add-lhci-template/step.yaml
     - $yaml: ../../ci/hydrate-pr-description/steps/add-gha-template/step.yaml
 
     - $yaml: ../../reusable/steps/create-github-repo/step.yaml
@@ -69,6 +70,6 @@ spec:
       - url: ${{steps.publish_repo.output.remoteUrl }}
         title: "Go to freshly created repo"
       - url: https://github.com/YotpoLtd/terraform-github/tree/master/RnD-teams
-        title: "Add ${{ parameters.repo_name }} to your team in terraform-github"
+        title: "❗️ Add ${{ parameters.repo_name }} to your team in terraform-github"
 
 

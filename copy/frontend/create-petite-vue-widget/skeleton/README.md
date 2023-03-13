@@ -1,8 +1,24 @@
-# ${{ values.widget_name }}
-# ${{ values.widgetName }}
+# Finalizing repo preparations 
+1. go to `index.html` and add proper values to
+```html
+<div class="yotpo-widget-instance yotpo-${{ values.widget_name }}-widget" 
+       data-yotpo-instance-id="123" 
+       data-yotpo-product-id="12345677890" 
+       data-yotpo-section-id="main"></div>
+```
+and to 
+```js
+  var merchantData = {
+        guid: 'guid',
+      }
+```
+2. create `.env` file and put there
+```text
+APPLITOOLS_API_KEY=<YOUR_KEY>
+```
+3. Delete this block :)
+
 # ${{ values.repo_name }}
-
-
 [![CI](https://github.com/YotpoLtd/${{ values.repo_name }}/actions/workflows/build.yaml/badge.svg?branch=master)](https://github.com/YotpoLtd/${{ values.repo_name }}/actions/workflows/build.yaml)
 
 ## Node Version

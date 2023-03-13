@@ -29,6 +29,7 @@ export interface WidgetConfig {
   primaryFont: FontStyle
   storeLanguage: string
   headlineText: string
+  welcomeText: string
 }
 
 export interface WidgetActions {

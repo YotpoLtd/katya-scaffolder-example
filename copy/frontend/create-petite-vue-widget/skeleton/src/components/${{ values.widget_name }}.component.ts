@@ -40,6 +40,9 @@ export class ${{ values.widgetName }}Component {
       textColor() {
         return this.config.textColor
       },
+      welcomeText() {
+        return this.config.welcomeText
+      },
     })
     vue.directive('intersection', Intersection)
     if (element.length && config.isReadOnly) {

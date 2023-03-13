@@ -66,6 +66,7 @@ export class StoreService {
       isLoading: getValueOrDefault(customizationsOverrides['mode-is-loading'], false),
       // this is just an example of translation usage ⬇️
       headlineText: getValueOrDefault(customizationsOverrides['write-a-review-text'], 'Write a review'),
+      welcomeText: getValueOrDefault(customizationsOverrides['welcome-text'], 'Good morning'),
       staticContent,
       storeLanguage,
       ...getViewConfigurations(customizationsOverrides),

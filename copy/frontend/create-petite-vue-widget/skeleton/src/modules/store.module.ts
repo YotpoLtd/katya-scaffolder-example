@@ -41,6 +41,10 @@ export const getViewConfigurations = (customizationsOverrides: MapObject): ViewS
       default: false,
       key: 'is-mobile',
     },
+    welcomeText: {
+      default: 'Good morning',
+      key: 'welcome-text',
+    },
     primaryColor: {
       default: COLORS.yotpoSkyBlue,
       key: 'view-primary-color',

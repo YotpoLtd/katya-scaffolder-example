@@ -6,7 +6,7 @@ export const template = `
     :class="get${{ values.widgetName }}Class()"
     >
 	<div class="yotpo-widget-clear" :color="textColor()" >
-        <h1>Hello!</h1>
+        <h1>{{welcomeText()}}!</h1>
   </div>
 </div>
 `
